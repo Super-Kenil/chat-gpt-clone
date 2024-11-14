@@ -1,8 +1,13 @@
 import type { Metadata } from "next"
 import { Inter } from 'next/font/google'
 import { cn } from '@/lib/utils'
+const AppProvidersWrapper = dynamic(() => import('@/components/AppProvidersWrapper'))
 
 import "./globals.css"
+import dynamic from 'next/dynamic'
+import LeftSideBar from '@/components/LeftSideBar'
+import { SidebarTrigger } from '@/components/ui/sidebar'
+import RightSideBar from '@/components/RightSideBar'
 
 const fontHeading = Inter({
   subsets: ['latin'],
@@ -25,7 +30,11 @@ export default function RootLayout ({ children, }: Readonly<{ children: React.Re
   return (
     <html lang="en">
       <body className={cn('antialiased', fontHeading.variable, fontBody.variable)}>
-        {children}
+        <AppProvidersWrapper>
+          <LeftSideBar />
+          <RightSideBar />
+          {children}
+        </AppProvidersWrapper>
       </body>
     </html>
   )

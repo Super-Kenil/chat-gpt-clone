@@ -5,28 +5,13 @@ import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuIte
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar"
 import { Textarea } from "@/components/ui/textarea"
 import { LuArrowUp, LuBot, LuChevronDown, LuClipboard, LuPaperclip, LuPen, LuRefreshCcw, LuSparkle, LuThumbsDown, LuThumbsUp, LuZap } from 'react-icons/lu'
+import { SidebarTrigger } from './ui/sidebar'
 
 export function ChatScreen () {
   return (
-    <div className="grid md:grid-cols-[260px_1fr] min-h-screen w-full bg-background dark:bg-gray-800 text-foreground dark:text-white">
-      <div className="flex-col hidden gap-2 text-foreground bg-background md:flex h-screen">
-        <div className="sticky top-0 p-2">
-          <Button variant="ghost" className="justify-start w-full gap-2 px-2 text-left">
-            <div className="flex items-center justify-center rounded-full w-7 h-7 bg-gray-300 dark:bg-gray-600">
-              <LuBot className="w-4 h-4" />
-            </div>
-            <div className="overflow-hidden text-sm grow text-ellipsis whitespace-nowrap">ChatGPT</div>
-            <LuPen className="w-4 h-4" />
-          </Button>
-        </div>
-        <div className="flex-1 overflow-y-auto border-r-2">
-          <LeftPanelItems />
-          <LeftPanelItems />
-          <LeftPanelItems />
-          <LeftPanelItems />
-        </div>
-      </div>
+
       <div className="flex flex-col">
+          <SidebarTrigger />
         <div className="sticky top-0 p-2">
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
@@ -152,6 +137,32 @@ export function ChatScreen () {
           </p>
         </div>
       </div>
+    // <div className="grid md:grid-cols-[260px_1fr] min-h-screen w-full bg-background dark:bg-gray-800 text-foreground dark:text-white">
+      // {/* <LeftPanel /> */}
+    // </div>
+  )
+}
+
+
+
+const LeftPanel = () => {
+  return (
+    <div className="flex-col hidden gap-2 text-foreground bg-background md:flex h-screen">
+      <div className="sticky top-0 p-2">
+        <Button variant="ghost" className="justify-start w-full gap-2 px-2 text-left">
+          <div className="flex items-center justify-center rounded-full w-7 h-7 bg-gray-300 dark:bg-gray-600">
+            <LuBot className="w-4 h-4" />
+          </div>
+          <div className="overflow-hidden text-sm grow text-ellipsis whitespace-nowrap">ChatGPT</div>
+          <LuPen className="w-4 h-4" />
+        </Button>
+      </div>
+      <div className="flex-1 overflow-y-auto border-r-2">
+        <LeftPanelItems />
+        <LeftPanelItems />
+        <LeftPanelItems />
+        <LeftPanelItems />
+      </div>
     </div>
   )
 }
@@ -224,3 +235,4 @@ const LeftPanelItems = () => {
     </>
   )
 }
+

@@ -1,4 +1,4 @@
-import { ChatScreen } from '@/components/component/chat-screen'
+import { ChatScreen } from '@/components/chat-screen'
 
 export default function Home () {
   return (
