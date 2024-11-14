@@ -32,8 +32,8 @@ export default function RootLayout ({ children, }: Readonly<{ children: React.Re
       <body className={cn('antialiased', fontHeading.variable, fontBody.variable)}>
         <AppProvidersWrapper>
           <LeftSideBar />
-          <RightSideBar />
           {children}
+          <RightSideBar />
         </AppProvidersWrapper>
       </body>
     </html>

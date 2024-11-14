@@ -10,7 +10,7 @@ import { SidebarTrigger } from './ui/sidebar'
 export function ChatScreen () {
   return (
 
-      <div className="flex flex-col">
+      <div className="flex flex-col mx-auto">
           <SidebarTrigger />
         <div className="sticky top-0 p-2">
           <DropdownMenu>
