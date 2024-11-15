@@ -2,33 +2,27 @@
 
 import * as React from "react"
 import {
-  LuArrowUp,
   LuBadgeCheck,
   LuBell,
   LuBookOpen,
   LuBot,
-  LuChevronRight,
   LuChevronsUpDown,
-  LuClipboard,
   LuCommand,
   LuCreditCard,
-  LuFolder,
-  LuForward,
   LuFrame,
   LuGalleryVerticalEnd,
   LuLogOut,
   LuMap,
   LuMoreHorizontal,
-  LuPaperclip,
+  LuPencilLine,
   LuPieChart,
   LuPlus,
-  LuRefreshCcw,
   LuSettings2,
   LuSparkles,
+  LuStar,
   LuTerminalSquare,
-  LuThumbsDown, LuThumbsUp,
   LuTrash2,
-  LuWaves,
+  LuWaves
 } from "react-icons/lu"
 
 import {
@@ -36,19 +30,6 @@ import {
   AvatarFallback,
   AvatarImage,
 } from "@/components/ui/avatar"
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbList,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb"
-import {
-  Collapsible,
-  CollapsibleContent,
-  CollapsibleTrigger,
-} from "@/components/ui/collapsible"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -59,7 +40,6 @@ import {
   DropdownMenuShortcut,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
-import { Separator } from "@/components/ui/separator"
 import {
   Sidebar,
   SidebarContent,
@@ -67,21 +47,12 @@ import {
   SidebarGroup,
   SidebarGroupLabel,
   SidebarHeader,
-  SidebarInset,
   SidebarMenu,
   SidebarMenuAction,
   SidebarMenuButton,
   SidebarMenuItem,
-  SidebarMenuSub,
-  SidebarMenuSubButton,
-  SidebarMenuSubItem,
-  SidebarProvider,
-  SidebarRail,
-  SidebarTrigger,
+  SidebarRail
 } from "@/components/ui/sidebar"
-import { Button } from './ui/button'
-import { Textarea } from './ui/textarea'
-import Header from './Header'
 
 export const iframeHeight = "800px"
 
@@ -283,7 +254,7 @@ const LeftSideBar = () => {
         </SidebarMenu>
       </SidebarHeader>
       <SidebarContent>
-        <SidebarGroup>
+        {/* <SidebarGroup>
           <SidebarGroupLabel>Platform</SidebarGroupLabel>
           <SidebarMenu>
             {data.navMain.map((item) => (
@@ -318,9 +289,9 @@ const LeftSideBar = () => {
               </Collapsible>
             ))}
           </SidebarMenu>
-        </SidebarGroup>
+        </SidebarGroup> */}
         <SidebarGroup className="group-data-[collapsible=icon]:hidden">
-          <SidebarGroupLabel>Projects</SidebarGroupLabel>
+          <SidebarGroupLabel>Starred Chats</SidebarGroupLabel>
           <SidebarMenu>
             {data.projects.map((item) => (
               <SidebarMenuItem key={item.name}>
@@ -343,28 +314,70 @@ const LeftSideBar = () => {
                     align="end"
                   >
                     <DropdownMenuItem>
-                      <LuFolder className="text-muted-foreground" />
-                      <span>View Project</span>
+                      <LuStar className="text-muted-foreground" />
+                      <span>Star</span>
                     </DropdownMenuItem>
                     <DropdownMenuItem>
-                      <LuForward className="text-muted-foreground" />
-                      <span>Share Project</span>
+                      <LuPencilLine className="text-muted-foreground" />
+                      <span>Rename</span>
                     </DropdownMenuItem>
                     <DropdownMenuSeparator />
-                    <DropdownMenuItem>
-                      <LuTrash2 className="text-muted-foreground" />
-                      <span>Delete Project</span>
+                    <DropdownMenuItem className='text-destructive focus:text-destructive'>
+                      <LuTrash2 className="text-destructive" />
+                      <span>Delete</span>
                     </DropdownMenuItem>
                   </DropdownMenuContent>
                 </DropdownMenu>
               </SidebarMenuItem>
             ))}
-            <SidebarMenuItem>
+            {/* <SidebarMenuItem>
               <SidebarMenuButton className="text-sidebar-foreground/70">
                 <LuMoreHorizontal className="text-sidebar-foreground/70" />
                 <span>More</span>
               </SidebarMenuButton>
-            </SidebarMenuItem>
+            </SidebarMenuItem> */}
+          </SidebarMenu>
+        </SidebarGroup>
+        <SidebarGroup className="group-data-[collapsible=icon]:hidden">
+          <SidebarGroupLabel>Other Chats</SidebarGroupLabel>
+          <SidebarMenu>
+            {data.projects.map((item) => (
+              <SidebarMenuItem key={item.name}>
+                <SidebarMenuButton asChild>
+                  <a href={item.url}>
+                    <item.icon />
+                    <span>{item.name}</span>
+                  </a>
+                </SidebarMenuButton>
+                <DropdownMenu>
+                  <DropdownMenuTrigger asChild>
+                    <SidebarMenuAction showOnHover>
+                      <LuMoreHorizontal />
+                      <span className="sr-only">More</span>
+                    </SidebarMenuAction>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent
+                    className="w-48 rounded-lg"
+                    side="bottom"
+                    align="end"
+                  >
+                    <DropdownMenuItem>
+                      <LuStar className="text-muted-foreground" />
+                      <span>Star</span>
+                    </DropdownMenuItem>
+                    <DropdownMenuItem>
+                      <LuPencilLine className="text-muted-foreground" />
+                      <span>Rename</span>
+                    </DropdownMenuItem>
+                    <DropdownMenuSeparator />
+                    <DropdownMenuItem className='text-destructive focus:text-destructive'>
+                      <LuTrash2 className="text-destructive" />
+                      <span>Delete</span>
+                    </DropdownMenuItem>
+                  </DropdownMenuContent>
+                </DropdownMenu>
+              </SidebarMenuItem>
+            ))}
           </SidebarMenu>
         </SidebarGroup>
       </SidebarContent>
